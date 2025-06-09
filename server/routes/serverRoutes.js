@@ -14,6 +14,7 @@ import PolicyRoute from "./policyRoutes"
 import DocumentRoute from './documentRoutes'
 import PolicyDocumentRoute from './policyDocumentRoutes'
 import emailTemmplateRoute from './emailTemplateRoutes'
+import TeamRoute from './teamRoutes'
 
 router.use('/lead', LeadRoute);
 router.use('/contact', ContactRoute);
@@ -28,5 +29,6 @@ router.use('/policy', PolicyRoute)
 router.use('/document', DocumentRoute)
 router.use('/policydocument', PolicyDocumentRoute)
 router.use('/emailtemplate', emailTemmplateRoute)
+router.use('/team', TeamRoute)
 
 export default router;
