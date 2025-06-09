@@ -86,4 +86,17 @@ const deleteMany = async (req, res) => {
     }
 };
 
-export default { index, add, view, edit, deleteData, deleteMany }
+const stats = async (req, res) => {
+    try {
+        const filter = { deleted: false };
+        if (req.user && req.user._id) {
+            filter.createdBy = req.user._id;
+        }
+        const totalCalls = await Calls.countDocuments(filter);
+        res.status(200).json({ totalCalls });
+    } catch (err) {
+        res.status(500).json({ message: "Error calculating stats", error: err.message });
+    }
+};
+
+export default { index, add, view, edit, deleteData, deleteMany, stats }

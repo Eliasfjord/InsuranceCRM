@@ -23,6 +23,7 @@ const edit = async (req, res) => {
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
                     emailAddress: req.body.emailAddress,
+                    team: req.body.team,
                     modifiedOn: req.body.modifiedOn
                 }
             },
@@ -59,7 +60,7 @@ const deleteData = async (req, res) => {
 
 const register = async (req, res) => {
     try {
-        const { firstName, lastName, emailAddress, password } = req.body;
+        const { firstName, lastName, emailAddress, password, team } = req.body;
 
         // Check if the username is already taken
         const existingUser = await User.findOne({ emailAddress });
@@ -71,7 +72,7 @@ const register = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // Create a new user
-        const newUser = new User({ firstName, lastName, emailAddress, password: hashedPassword });
+        const newUser = new User({ firstName, lastName, emailAddress, password: hashedPassword, team });
         await newUser.save();
 
         res.status(201).json({ message: 'User created successfully' });
