@@ -10,7 +10,11 @@ InsurancePro is a cutting-edge Customer Relationship Management (CRM) platform t
 2. Lead Management: Seamlessly track leads and turn them into loyal clients.
 3. Policy Tracking: Keep tabs on policies, premiums, and renewals effortlessly.
 4. Customization: Tailor the CRM to your unique workflow and branding.
-5. Script & Objections Co-Pilot: Create and use customizable sales scripts with quick-access buttons. Quick access to common objections and optimal responses. AI can suggest adjustments based on which responses generate the most conversions.
+codex/add-automatic-sales-commission-calculations
+5. Statistics & Salary Calculation: Automatic overview of calls, meetings,
+   sales and commission with daily, weekly and monthly progress, including a
+   motivational "value per call" metric.
+5. Script & Objections Co-Pilot: Create and use customizable sales scripts with quick-access buttons. Quick access to common objections and optimal responses. AI can suggest adjustments based on which responses generate the most conversions. main
 
 Ready to elevate your insurance business? Check out our Installation Guide to get started.
 
