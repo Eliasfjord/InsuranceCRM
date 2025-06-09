@@ -10,6 +10,9 @@ InsurancePro is a cutting-edge Customer Relationship Management (CRM) platform t
 2. Lead Management: Seamlessly track leads and turn them into loyal clients.
 3. Policy Tracking: Keep tabs on policies, premiums, and renewals effortlessly.
 4. Customization: Tailor the CRM to your unique workflow and branding.
+5. Statistics & Salary Calculation: Automatic overview of calls, meetings,
+   sales and commission with daily, weekly and monthly progress, including a
+   motivational "value per call" metric.
 
 Ready to elevate your insurance business? Check out our Installation Guide to get started.
 
