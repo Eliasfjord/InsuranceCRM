@@ -177,19 +177,34 @@ const deleteData = async (req, res) => {
     const leadId = req.params.id;
 
     // Delete notes related to the lead
-    await Notes.updateMany({ lead_id: leadId, deleted: true });
+    await Notes.updateMany(
+      { lead_id: leadId },
+      { $set: { deleted: true } }
+    );
 
     // Delete calls related to the lead
-    await Calls.updateMany({ lead_id: leadId, deleted: true });
+    await Calls.updateMany(
+      { lead_id: leadId },
+      { $set: { deleted: true } }
+    );
 
     // Delete meetings related to the lead
-    await Meetings.updateMany({ lead_id: leadId, deleted: true });
+    await Meetings.updateMany(
+      { lead_id: leadId },
+      { $set: { deleted: true } }
+    );
 
     // Delete emails related to the lead
-    await Emails.updateMany({ lead_id: leadId, deleted: true });
+    await Emails.updateMany(
+      { lead_id: leadId },
+      { $set: { deleted: true } }
+    );
 
     // Delete tasks related to the lead
-    await Tasks.updateMany({ lead_id: leadId, deleted: true });
+    await Tasks.updateMany(
+      { lead_id: leadId },
+      { $set: { deleted: true } }
+    );
 
     // Delete the lead itself
     const deletedLead = await Lead.findByIdAndUpdate(leadId, { deleted: true });

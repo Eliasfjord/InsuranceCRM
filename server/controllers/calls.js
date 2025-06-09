@@ -9,8 +9,8 @@ const index = async (req, res) => {
         .populate("lead_id", ["firstName", "lastName"])
         .populate("contact_id", ["firstName", "lastName"])
 
-    let totalRecords = allData.length
-    res.send({ result: allData, total_recodes: totalRecords })
+    const totalRecords = allData.length;
+    res.send({ result: allData, total_records: totalRecords });
 }
 
 
