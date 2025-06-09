@@ -34,6 +34,12 @@ const Lead = new mongoose.Schema({
     conversionDateTime: { type: String },
     leadCategory: { type: String },
     leadPriority: { type: String },
+    nextContact: { type: Date },
+    temperature: {
+        type: String,
+        enum: ['Hot', 'Warm', 'Cold'],
+        default: 'Warm'
+    },
     contact_id: {
         type: mongoose.Schema.ObjectId,
         ref: "Contacts",

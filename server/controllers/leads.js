@@ -148,6 +148,29 @@ const view = async (req, res) => {
   }
 };
 
+const upcoming = async (req, res) => {
+  try {
+    const now = new Date();
+    const nextWeek = new Date();
+    nextWeek.setDate(now.getDate() + 7);
+
+    const filter = {
+      deleted: false,
+      nextContact: { $gte: now, $lte: nextWeek },
+    };
+
+    let leads = await Lead.find(filter).populate({
+      path: 'createdBy',
+      select: ['firstName', 'lastName']
+    });
+
+    res.status(200).json({ leads });
+  } catch (err) {
+    console.error('Failed to fetch upcoming leads:', err);
+    res.status(500).json({ message: 'Error fetching upcoming leads' });
+  }
+};
+
 
 const deleteData = async (req, res) => {
   try {
@@ -216,4 +239,4 @@ const deleteMany = async (req, res) => {
   }
 };
 
-export default { index, add, edit, view, deleteData, deleteMany }
+export default { index, add, edit, view, deleteData, deleteMany, upcoming }
