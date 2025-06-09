@@ -121,14 +121,14 @@ const deleteData = async (req, res) => {
     try {
         const policyId = req.params.id;
 
-        // Delete notes related to the lead
-        await Notes.updateMany({ policy_id: policyId, deleted: true });
+        // Delete notes related to the policy
+        await Notes.updateMany({ policy_id: policyId }, { $set: { deleted: true } });
 
-        // Delete claim related to the lead
-        await claim.updateMany({ policy_id: policyId, deleted: true });
+        // Delete claim related to the policy
+        await claim.updateMany({ policy_id: policyId }, { $set: { deleted: true } });
 
-        // Delete policyDocumnet related to the lead
-        await policyDocument.updateMany({ policy_id: policyId, deleted: true });
+        // Delete policyDocument related to the policy
+        await policyDocument.updateMany({ policy_id: policyId }, { $set: { deleted: true } });
 
         // Delete the policy itself
         const deletedPolicy = await Policy.findByIdAndUpdate(policyId, { deleted: true });
