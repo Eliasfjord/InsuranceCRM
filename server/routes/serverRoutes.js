@@ -14,7 +14,11 @@ import PolicyRoute from "./policyRoutes"
 import DocumentRoute from './documentRoutes'
 import PolicyDocumentRoute from './policyDocumentRoutes'
 import emailTemmplateRoute from './emailTemplateRoutes'
+codex/add-automatic-sales-commission-calculations
 import StatsRoute from './statisticsRoutes'
+=======
+import TeamRoute from './teamRoutes'
+main
 
 router.use('/lead', LeadRoute);
 router.use('/contact', ContactRoute);
@@ -29,6 +33,10 @@ router.use('/policy', PolicyRoute)
 router.use('/document', DocumentRoute)
 router.use('/policydocument', PolicyDocumentRoute)
 router.use('/emailtemplate', emailTemmplateRoute)
+codex/add-automatic-sales-commission-calculations
 router.use('/stats', StatsRoute)
+
+router.use('/team', TeamRoute)
+main
 
 export default router;

@@ -3,6 +3,7 @@ import Policy from "../model/policy";
 import policyDocument from "../model/policyDocument";
 import claim from "../model/claim";
 import Notes from "../model/Notes";
+import Team from "../model/Team";
 
 
 const index = async (req, res) => {
@@ -172,4 +173,33 @@ const deleteMany = async (req, res) => {
     }
 };
 
-export default { index, add, view, edit, deleteData, deleteMany }
+const salesByTeam = async (req, res) => {
+    try {
+        const teamId = req.params.teamId;
+        const team = await Team.findById(teamId).populate('members', 'firstName lastName');
+        if (!team) {
+            return res.status(404).json({ message: 'Team not found' });
+        }
+        const memberIds = team.members.map((m) => m._id);
+        const sales = await Policy.aggregate([
+            { $match: { assigned_agent: { $in: memberIds }, deleted: false } },
+            { $group: { _id: '$assigned_agent', total: { $sum: 1 } } }
+        ]);
+
+        const result = team.members.map((member) => {
+            const sale = sales.find((s) => s._id.toString() === member._id.toString());
+            return {
+                userId: member._id,
+                name: `${member.firstName} ${member.lastName}`,
+                policies: sale ? sale.total : 0
+            };
+        });
+
+        res.status(200).json({ teamId, sales: result });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Internal Server Error.' });
+    }
+};
+
+export default { index, add, view, edit, deleteData, deleteMany, salesByTeam }

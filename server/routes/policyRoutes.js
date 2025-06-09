@@ -10,6 +10,6 @@ router.get('/view/:id', auth,Policy.view)
 router.put('/edit/:id', auth,Policy.edit)
 router.delete('/delete/:id', auth,Policy.deleteData)
 router.post('/deletemany', auth, Policy.deleteMany)
+router.get('/sales/team/:teamId', auth, Policy.salesByTeam)
 
-
-export default router
+export default router;

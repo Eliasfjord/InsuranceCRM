@@ -8,6 +8,10 @@ const User = new mongoose.Schema({
     role: {
         type: String, enum: ['user', 'admin'], default: 'user'
     },
+    team: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Team'
+    },
     deleted: {
         type: Boolean,
         default: false,

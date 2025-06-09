@@ -20,6 +20,7 @@ import Meeting from './pages/meeting/Meeting';
 import MeetingView from './pages/meeting/View'
 import Email from './pages/email/Email'
 import EmailView from './pages/email/View'
+import TeamSales from './pages/team/TeamSales'
 import Task from './pages/task/Task';
 import TaskView from './pages/task/View'
 import EmailTemplate from './pages/emailTemplate/EmailTemplate';
@@ -57,6 +58,7 @@ export default function Router() {
         { path: 'emailtemplate', element: <EmailTemplate /> },
         { path: 'emailtemplate/add', element: <AddEmailTemplate /> },
         { path: 'emailtemplate/view/:id', element: <ViewEmailTemplate /> },
+        { path: 'team/:teamId/sales', element: <TeamSales /> },
         // { path: 'history', element: <History /> },
         
         // { path: '*', element: <Navigate to="/dashboard/app" /> },
